@@ -1,17 +1,456 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>заголовок</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="Досье на противостояние Патрика Джейна и Красного Джона. Наблюдение, мотивы и следы, которые невозможно стереть.">
+  <title>Дело Красного Джона — The Mentalist</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #11110f;
+      --panel: #191916;
+      --paper: #e8e0d0;
+      --muted: #a7a091;
+      --gold: #b9a47a;
+      --red: #a52a2e;
+      --red-bright: #d04743;
+      --line: rgba(232, 224, 208, .16);
+      --content: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 78% 12%, rgba(126, 28, 29, .12), transparent 33rem),
+        radial-gradient(ellipse at 8% 58%, rgba(185, 164, 122, .055), transparent 30rem),
+        var(--bg);
+      color: var(--paper);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: .11;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--gold); font-size: .72rem; letter-spacing: .22em;
+      text-transform: uppercase; font-weight: 700;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--red-bright); }
+    .topbar {
+      position: absolute; z-index: 5; inset: 0 0 auto;
+      border-bottom: 1px solid rgba(232,224,208,.12);
+    }
+    .topbar-inner {
+      min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    }
+    .brand { display: flex; gap: 13px; align-items: center; }
+    .brand-mark { width: 34px; height: 34px; object-fit: contain; mix-blend-mode: screen; }
+    .brand-title { display: block; font-family: Georgia, serif; letter-spacing: .14em; font-size: .8rem; }
+    .brand-sub { display: block; color: var(--muted); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; margin-top: 2px; }
+    nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
+    nav a {
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: #d0c9bb; transition: color .2s ease;
+    }
+    nav a:hover, nav a:focus-visible { color: var(--red-bright); }
+    .hero {
+      min-height: 760px; min-height: max(720px, 100svh);
+      position: relative; isolation: isolate; display: grid; align-items: center;
+      border-bottom: 1px solid var(--line); overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -3;
+      background: url("images/mentalistWITHbg.jpg") center 35% / cover no-repeat;
+      opacity: .2; filter: grayscale(1) contrast(1.2);
+      transform: scale(1.03);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background:
+        linear-gradient(90deg, #11110f 0%, rgba(17,17,15,.97) 29%, rgba(17,17,15,.72) 54%, rgba(17,17,15,.52) 100%),
+        linear-gradient(0deg, #11110f 0%, transparent 35%, rgba(17,17,15,.4) 100%);
+    }
+    .hero-portrait {
+      position: absolute; z-index: -1; right: max(-15px, calc((100vw - var(--content))/2 - 75px));
+      bottom: 0; height: min(86vh, 830px); width: min(53vw, 650px);
+      object-fit: contain; object-position: center bottom;
+      filter: grayscale(1) contrast(1.08) brightness(.75);
+      opacity: .84;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 79%, transparent 100%), linear-gradient(0deg, #000 0%, #000 72%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 79%, transparent 100%), linear-gradient(0deg, #000 0%, #000 72%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+    .hero-copy { position: relative; z-index: 2; padding: 150px 0 100px; max-width: 720px; }
+    .case-id { display: inline-flex; gap: 10px; align-items: center; color: var(--muted); font-size: .68rem; letter-spacing: .22em; margin-bottom: 24px; }
+    .case-id span { color: var(--red-bright); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 24px; font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400; font-size: clamp(3.6rem, 8.3vw, 7.7rem);
+      line-height: .91; letter-spacing: -.055em; text-transform: uppercase;
+    }
+    h1 span { color: var(--red-bright); font-style: italic; }
+    .hero-lede { max-width: 480px; color: #c2bbae; font-size: clamp(.96rem, 1.5vw, 1.08rem); margin-bottom: 33px; }
+    .hero-lede strong { color: var(--paper); font-weight: 500; }
+    .actions { display: flex; gap: 13px; flex-wrap: wrap; }
+    .button {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center;
+      gap: 12px; padding: 0 19px; border: 1px solid rgba(232,224,208,.27);
+      background: transparent; color: var(--paper); cursor: pointer;
+      text-transform: uppercase; letter-spacing: .13em; font-size: .68rem;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: var(--red-bright); }
+    .button-primary { background: var(--red); border-color: var(--red); }
+    .button-primary:hover { background: #bd3438; border-color: #bd3438; }
+    .button .arrow { color: #f0d6b4; font-size: 1rem; }
+    .hero-note {
+      position: absolute; right: 5%; top: 34%; width: 125px;
+      color: rgba(232,224,208,.45); font-size: .58rem; letter-spacing: .18em;
+      text-transform: uppercase; line-height: 1.8; text-align: center; transform: rotate(8deg);
+    }
+    .hero-note img { width: 80px; height: 80px; object-fit: contain; margin: 0 auto 8px; mix-blend-mode: screen; opacity: .73; }
+    .hero-bottom {
+      position: absolute; left: 0; right: 0; bottom: 25px;
+      display: flex; justify-content: space-between; align-items: end; gap: 25px;
+      color: rgba(232,224,208,.5); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .hero-bottom .scroll-cue { display: flex; align-items: center; gap: 10px; }
+    .scroll-cue::before { content: ""; height: 34px; width: 1px; background: var(--red-bright); }
+    section { padding: clamp(80px, 11vw, 145px) 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 46px; }
+    .section-head h2 { margin: 15px 0 0; font: 400 clamp(2.5rem, 5vw, 4.8rem)/.98 Georgia, serif; letter-spacing: -.04em; max-width: 700px; }
+    .section-head h2 em { color: var(--gold); font-weight: 400; }
+    .section-index { font: italic 3.6rem/1 Georgia, serif; color: rgba(185,164,122,.35); }
+    .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .profile {
+      min-height: 420px; position: relative; overflow: hidden; isolation: isolate;
+      display: flex; align-items: end; padding: 30px; border: 1px solid var(--line);
+      background: linear-gradient(135deg, #272722, #151513 70%);
+    }
+    .profile::before {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background: linear-gradient(0deg, rgba(12,12,11,.98) 0%, rgba(12,12,11,.45) 42%, rgba(12,12,11,.08) 100%);
+    }
+    .profile-jane::after {
+      content: ""; position: absolute; z-index: -3; inset: 0;
+      background: url("images/Simon_Baker.png") no-repeat 72% 12% / auto 115%;
+      opacity: .6; filter: grayscale(1) contrast(1.12);
+      -webkit-mask-image: linear-gradient(0deg, #000 0%, #000 60%, transparent 100%);
+      mask-image: linear-gradient(0deg, #000 0%, #000 60%, transparent 100%);
+    }
+    .profile-john { background: #171313; }
+    .profile-john::after {
+      content: ""; position: absolute; z-index: -3; inset: 0;
+      background: url("images/johnNOTEbg.png") no-repeat 70% center / cover;
+      opacity: .32; filter: grayscale(1) contrast(1.2);
+    }
+    .profile-john::before {
+      background: linear-gradient(90deg, rgba(15,13,13,.97) 0%, rgba(15,13,13,.64) 50%, rgba(15,13,13,.27) 100%), linear-gradient(0deg, rgba(15,13,13,.94) 0%, transparent 70%);
+    }
+    .profile-cutout { position: absolute; width: 49%; max-height: 94%; object-fit: contain; object-position: center bottom; right: 1%; bottom: 0; opacity: .76; filter: grayscale(1) contrast(1.17); }
+    .profile-content { max-width: 350px; position: relative; z-index: 1; }
+    .profile-tag { color: var(--gold); text-transform: uppercase; font-size: .65rem; letter-spacing: .2em; margin-bottom: 12px; }
+    .profile h3 { font: 400 clamp(2.4rem, 4vw, 3.7rem)/.95 Georgia, serif; margin-bottom: 15px; }
+    .profile p { color: #c0b8ab; max-width: 310px; font-size: .89rem; margin-bottom: 0; }
+    .profile-john h3 { color: #df625c; }
+    .profile-john .profile-tag { color: #d45c58; }
+    .profile-john .profile-content { max-width: 310px; }
+    .divider-line { height: 1px; background: var(--line); margin-top: 22px; width: 100%; }
+    .quote-band {
+      border-block: 1px solid var(--line); padding: clamp(44px, 7vw, 82px) 0;
+      background: linear-gradient(90deg, rgba(165,42,46,.1), transparent 70%);
+    }
+    .quote-inner { display: grid; grid-template-columns: 130px 1fr; align-items: start; gap: 28px; }
+    .quote-mark { font: 7rem/.7 Georgia, serif; color: var(--red); }
+    blockquote { font: 400 clamp(1.8rem, 3.6vw, 3.7rem)/1.13 Georgia, serif; letter-spacing: -.03em; margin: 0; max-width: 900px; }
+    blockquote span { color: var(--gold); font-style: italic; }
+    .quote-caption { margin-top: 20px; color: var(--muted); font-size: .68rem; letter-spacing: .17em; text-transform: uppercase; }
+    .clues-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,.015), transparent); }
+    .clues-intro { color: var(--muted); max-width: 470px; font-size: .9rem; margin: 0 0 38px; }
+    .clues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .clue {
+      text-align: left; position: relative; min-height: 270px; padding: 26px;
+      border: 1px solid var(--line); background: rgba(24,24,21,.7); color: var(--paper);
+      cursor: pointer; overflow: hidden; transition: border-color .22s ease, background .22s ease, transform .22s ease;
+    }
+    .clue:hover, .clue[aria-expanded="true"] { border-color: rgba(208,71,67,.7); background: rgba(45,24,23,.6); transform: translateY(-3px); }
+    .clue-number { display: flex; justify-content: space-between; align-items: center; color: var(--gold); font-size: .68rem; letter-spacing: .2em; }
+    .clue-number b { font: 400 1.4rem Georgia, serif; color: var(--red-bright); }
+    .clue h3 { margin: 45px 0 12px; font: 400 1.6rem/1.05 Georgia, serif; }
+    .clue p { margin: 0; color: var(--muted); font-size: .82rem; max-height: 0; opacity: 0; transform: translateY(6px); transition: max-height .35s ease, opacity .25s ease, transform .25s ease; }
+    .clue[aria-expanded="true"] p { max-height: 150px; opacity: 1; transform: translateY(0); }
+    .clue-hint { position: absolute; bottom: 22px; right: 24px; color: rgba(232,224,208,.42); font-size: .61rem; letter-spacing: .14em; text-transform: uppercase; }
+    .clue[aria-expanded="true"] .clue-hint { color: var(--red-bright); }
+    .method-grid { display: grid; grid-template-columns: 1fr .82fr; gap: clamp(36px, 8vw, 120px); align-items: center; }
+    .method-copy h2 { font: 400 clamp(2.7rem, 5vw, 5rem)/.97 Georgia, serif; letter-spacing: -.05em; margin: 17px 0 24px; }
+    .method-copy h2 em { color: var(--gold); }
+    .method-copy p { max-width: 570px; color: #bdb5a8; font-size: .95rem; }
+    .switcher { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .switcher .button[aria-pressed="true"] { border-color: var(--red-bright); background: rgba(165,42,46,.18); }
+    .insight-card {
+      min-height: 330px; padding: 34px; position: relative; border: 1px solid var(--line);
+      background: radial-gradient(ellipse at 90% 0%, rgba(165,42,46,.14), transparent 55%), #171715;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .insight-card::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(232,224,208,.07); pointer-events: none; }
+    .insight-card .label { color: var(--red-bright); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; }
+    .insight-card p { font: 400 clamp(1.5rem, 2.7vw, 2.5rem)/1.16 Georgia, serif; margin: 34px 0; max-width: 360px; }
+    .insight-card small { color: var(--muted); font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; }
+    footer { padding: 35px 0 40px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+    .footer-signoff { font: italic 1.3rem Georgia, serif; color: var(--gold); }
+    .footer-note { color: #777267; font-size: .63rem; text-transform: uppercase; letter-spacing: .13em; text-align: right; }
+    .red-rule { height: 2px; width: 42px; background: var(--red); margin-top: 18px; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 34px, var(--content)); }
+      .topbar-inner { min-height: 70px; }
+      nav { gap: 12px; }
+      nav a { font-size: .58rem; letter-spacing: .08em; }
+      nav a:nth-child(2) { display: none; }
+      .brand-title { font-size: .72rem; }
+      .brand-sub { font-size: .5rem; }
+      .brand-mark { width: 28px; height: 28px; }
+      .hero { min-height: 790px; min-height: max(720px, 100svh); align-items: start; }
+      .hero::after { background: linear-gradient(90deg, rgba(17,17,15,.97), rgba(17,17,15,.77)), linear-gradient(0deg, #11110f 0%, transparent 60%); }
+      .hero-portrait { width: 94vw; height: 57vh; right: -17vw; opacity: .37; }
+      .hero-copy { padding: 150px 0 155px; }
+      h1 { font-size: clamp(3.3rem, 16vw, 6.5rem); }
+      .hero-note { display: none; }
+      .hero-bottom { bottom: 20px; font-size: .53rem; }
+      .hero-bottom > span:last-child { display: none; }
+      .section-head { align-items: start; }
+      .section-index { font-size: 2.7rem; }
+      .duo { grid-template-columns: 1fr; }
+      .profile { min-height: 390px; padding: 24px; }
+      .profile-cutout { width: 50%; opacity: .56; }
+      .quote-inner { grid-template-columns: 48px 1fr; gap: 16px; }
+      .quote-mark { font-size: 4rem; }
+      .clues { grid-template-columns: 1fr; }
+      .clue { min-height: 220px; }
+      .clue h3 { margin-top: 30px; }
+      .clue p { max-height: 0; }
+      .method-grid { grid-template-columns: 1fr; }
+      .insight-card { min-height: 260px; }
+      .footer-inner { align-items: start; flex-direction: column; }
+      .footer-note { text-align: left; }
+    }
+    @media (max-width: 420px) {
+      .brand-sub { max-width: 145px; }
+      nav a { letter-spacing: .04em; }
+      .button { width: 100%; }
+      .actions { max-width: 300px; }
+      .case-id { letter-spacing: .13em; font-size: .6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-    <h2>Это мой сайт</h>
-        <p>проверка текста</p>
-        <u>что то ляляляля</u>
-        <br>
-        <br>
-        <img src="Google.svg" alt="Google" width="100">
-        <br>
-        <a href="https://www.google.com/">Ссылка на гугл</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="В начало страницы">
+        <img class="brand-mark" src="images/red-john-smiley.png" alt="">
+        <span>
+          <span class="brand-title">THE MENTALIST</span>
+          <span class="brand-sub">Архив дела Красного Джона</span>
+        </span>
+      </a>
+      <nav aria-label="Главная навигация">
+        <a href="#dossier">Досье</a>
+        <a href="#clues">Улики</a>
+        <a href="#method">Метод</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero-portrait" src="images/Simon_Baker.png" alt="Портрет Патрика Джейна">
+      <div class="wrap">
+        <div class="hero-copy">
+          <div class="case-id"><span>CASE 01</span> / ЛИЧНОЕ ДЕЛО / НЕ ЗАКРЫТО</div>
+          <p class="eyebrow">Некоторые ответы стоят слишком дорого</p>
+          <h1 id="hero-title">Улыбка,<br>за которой<br><span>прячут правду.</span></h1>
+          <p class="hero-lede">Один человек привык читать окружающих. Другой превратил чужой страх в свою подпись. <strong>Их противостояние — игра не на силу, а на внимание.</strong></p>
+          <div class="actions">
+            <a class="button button-primary" href="#dossier">Открыть досье <span class="arrow">↘</span></a>
+            <a class="button" href="#clues">Изучить улики <span class="arrow">＋</span></a>
+          </div>
+          <div class="red-rule"></div>
+        </div>
+      </div>
+      <div class="hero-note" aria-hidden="true">
+        <img src="images/red-john-smiley.png" alt="">
+        наблюдение<br>— первая улика
+      </div>
+      <div class="wrap hero-bottom">
+        <span class="scroll-cue">Листайте, если готовы смотреть внимательнее</span>
+        <span>Ничто не случайно. Не всё — доказательство.</span>
+      </div>
+    </section>
+
+    <section id="dossier">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 / Досье</p>
+            <h2>Два способа<br>держать <em>контроль.</em></h2>
+          </div>
+          <span class="section-index">01</span>
+        </div>
+        <div class="duo">
+          <article class="profile profile-jane">
+            <div class="profile-content">
+              <div class="profile-tag">Наблюдатель · Патрик Джейн</div>
+              <h3>Увидеть<br>то, что скрыто.</h3>
+              <p>Он замечает паузы, жесты и мелкие несоответствия. Его преимущество — внимание. Его слабость — личная история, которая не даёт остановиться.</p>
+              <div class="divider-line"></div>
+            </div>
+          </article>
+          <article class="profile profile-john">
+            <img class="profile-cutout" src="images/johnNOTEnobg.png" alt="" aria-hidden="true">
+            <div class="profile-content">
+              <div class="profile-tag">Противник · Красный Джон</div>
+              <h3>Заставить<br>смотреть.</h3>
+              <p>Он управляет не только событиями, но и тем, как их воспринимают. Улыбка становится знаком присутствия — и испытанием для того, кто ищет смысл.</p>
+              <div class="divider-line"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote-band">
+      <div class="wrap quote-inner">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <div>
+          <blockquote>Самая опасная ошибка — принять первое впечатление за <span>истину.</span></blockquote>
+          <div class="quote-caption">Правило расследования № 1 · Без подписи</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="clues-section" id="clues">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 / Материалы дела</p>
+            <h2>Улики ничего<br>не говорят, пока <em>вы не спросите.</em></h2>
+          </div>
+          <span class="section-index">02</span>
+        </div>
+        <p class="clues-intro">Откройте карточки. Каждая ведёт не к готовому ответу, а к вопросу, который стоит задать.</p>
+        <div class="clues">
+          <button class="clue" type="button" aria-expanded="false">
+            <span class="clue-number">ФРАГМЕНТ <b>01</b></span>
+            <h3>Знак, оставленный намеренно</h3>
+            <p>Повторяющийся символ превращает отсутствие в присутствие. Важно не только то, кто его оставил, но и кому он адресован.</p>
+            <span class="clue-hint">Нажмите, чтобы изучить +</span>
+          </button>
+          <button class="clue" type="button" aria-expanded="false">
+            <span class="clue-number">ФРАГМЕНТ <b>02</b></span>
+            <h3>Деталь не на своём месте</h3>
+            <p>Мелочь приобретает значение лишь в контексте. Сначала сравните факты, потом стройте версию — иначе вы начнёте подгонять мир под догадку.</p>
+            <span class="clue-hint">Нажмите, чтобы изучить +</span>
+          </button>
+          <button class="clue" type="button" aria-expanded="false">
+            <span class="clue-number">ФРАГМЕНТ <b>03</b></span>
+            <h3>Личная мотивация</h3>
+            <p>Одержимость сужает поле зрения. Вопрос уже не только в том, что произошло, но и в том, какие факты человек готов не замечать ради ответа.</p>
+            <span class="clue-hint">Нажмите, чтобы изучить +</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="wrap method-grid">
+        <div class="method-copy">
+          <p class="eyebrow">03 / Точка зрения</p>
+          <h2>Смотри на факты.<br><em>Сомневайся в выводах.</em></h2>
+          <p>Эта история держится на противостоянии двух типов контроля: один пытается понять человека, другой — заставить его поверить в нужную версию. Попробуйте сменить угол зрения, прежде чем решить, что всё поняли.</p>
+          <div class="switcher" role="group" aria-label="Выберите точку зрения">
+            <button class="button" type="button" data-view="jane" aria-pressed="true">Метод Джейна</button>
+            <button class="button" type="button" data-view="john" aria-pressed="false">Метод Джона</button>
+          </div>
+        </div>
+        <aside class="insight-card" aria-live="polite">
+          <div class="label" id="insight-label">Позиция наблюдателя</div>
+          <p id="insight-text">«Что я действительно знаю — и что лишь предполагаю?»</p>
+          <small id="insight-foot">Собирай факты. Проверяй противоречия.</small>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <div class="footer-signoff">Дело не закрыто. Просто след стал тише.</div>
+        <div class="red-rule"></div>
+      </div>
+      <div class="footer-note">Архив наблюдений · Личное дело № 01<br>Не верьте улыбке. Проверяйте факты.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".clue").forEach((card) => {
+      card.addEventListener("click", () => {
+        const expanded = card.getAttribute("aria-expanded") === "true";
+        card.setAttribute("aria-expanded", String(!expanded));
+        const hint = card.querySelector(".clue-hint");
+        hint.textContent = expanded ? "Нажмите, чтобы изучить +" : "Фрагмент открыт −";
+      });
+    });
+
+    const perspectives = {
+      jane: {
+        label: "Позиция наблюдателя",
+        text: "«Что я действительно знаю — и что лишь предполагаю?»",
+        foot: "Собирай факты. Проверяй противоречия."
+      },
+      john: {
+        label: "Позиция манипулятора",
+        text: "«Что человек уже решил увидеть — и как это использовать?»",
+        foot: "Влияй на версию. Управляй ожиданием."
+      }
+    };
+    const insightLabel = document.getElementById("insight-label");
+    const insightText = document.getElementById("insight-text");
+    const insightFoot = document.getElementById("insight-foot");
+
+    document.querySelectorAll("[data-view]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const view = perspectives[button.dataset.view];
+        if (!view) return;
+        document.querySelectorAll("[data-view]").forEach((item) => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+        insightLabel.textContent = view.label;
+        insightText.textContent = view.text;
+        insightFoot.textContent = view.foot;
+      });
+    });
+  </script>
 </body>
 </html>
