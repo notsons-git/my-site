@@ -3,411 +3,242 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10110f">
-  <meta name="description" content="Патрик Джейн. Наблюдения, приёмы, дела и личное расследование. Фан-сайт The Mentalist.">
-  <meta property="og:title" content="Patrick Jane — личное дело">
-  <meta property="og:description" content="Я не читаю мысли. Я замечаю то, что вы пропускаете.">
+  <meta name="theme-color" content="#15191d">
+  <meta name="description" content="Патрик Джейн — консультант Калифорнийского бюро расследований. Профессиональный профиль, методы работы и специализация. Фан-сайт The Mentalist.">
+  <meta property="og:title" content="Патрик Джейн — профиль консультанта">
+  <meta property="og:description" content="Профессиональный профиль Патрика Джейна, консультанта CBI.">
   <meta property="og:url" content="https://notsons-git.github.io/my-site/">
   <meta property="og:image" content="https://notsons-git.github.io/my-site/images/Simon_Baker.png">
-  <title>тестовый сайт notsons</title>
+  <title>Патрик Джейн — профиль консультанта</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #10110f;
-      --bg-2: #181916;
-      --paper: #f0eee6;
-      --muted: #a5a69d;
-      --faint: #73756c;
-      --red: #e7473d;
-      --red-dark: #a82c28;
-      --line: rgba(240, 238, 230, .19);
-      --content: 1320px;
+      --bg: #15191d;
+      --surface: #1d2227;
+      --surface-2: #242a30;
+      --text: #e8e7e1;
+      --muted: #a7adb1;
+      --line: #3a4147;
+      --accent: #a84b43;
+      --accent-light: #d17b70;
+      --content: 1120px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
     body {
       margin: 0;
       background: var(--bg);
-      color: var(--paper);
-      font: 18px/1.65 Arial, Helvetica, sans-serif;
+      color: var(--text);
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    button { color: inherit; font: inherit; }
-    ::selection { background: var(--red); color: white; }
-    .wrap { width: min(var(--content), calc(100% - 72px)); margin-inline: auto; }
-    .eyebrow, .meta, .nav-link, .label, .folio {
-      font-family: Arial, Helvetica, sans-serif;
-      text-transform: uppercase;
-      letter-spacing: .13em;
+    button { font: inherit; }
+    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .meta, .eyebrow, .nav-link, .label {
       font-size: .72rem;
       line-height: 1.5;
-    }
-    .eyebrow { color: var(--muted); display: flex; align-items: center; gap: 12px; margin: 0 0 24px; }
-    .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--red); }
-    .topbar { position: sticky; z-index: 30; top: 0; background: rgba(16,17,15,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-    .topbar-inner { display: flex; justify-content: space-between; align-items: center; min-height: 76px; gap: 28px; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img { width: 34px; height: 34px; object-fit: contain; }
-    .brand strong { display: block; font: 700 .83rem/1.1 Arial, sans-serif; letter-spacing: .16em; }
-    .brand small { display: block; color: var(--muted); font-size: .66rem; letter-spacing: .1em; margin-top: 5px; }
-    nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 42px); }
-    .nav-link { color: #c4c4bb; font-size: .68rem; position: relative; transition: color .2s ease; }
-    .nav-link:hover, .nav-link:focus-visible { color: var(--red); }
-    .top-right { color: var(--muted); white-space: nowrap; }
-
-    .hero {
-      position: relative;
-      min-height: min(850px, calc(100svh - 76px));
-      min-height: max(690px, min(850px, calc(100svh - 76px)));
-      display: grid;
-      grid-template-columns: 1.04fr .96fr;
-      border-bottom: 1px solid var(--line);
-      isolation: isolate;
-      overflow: hidden;
-    }
-    .hero-copy {
-      align-self: center;
-      padding: 80px 20px 105px max(36px, calc((100vw - var(--content))/2));
-      position: relative;
-      z-index: 3;
-    }
-    .hero-index { display: flex; align-items: center; gap: 13px; color: var(--muted); margin-bottom: 36px; }
-    .hero-index b { color: var(--red); font-weight: 600; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      font: 800 clamp(4.8rem, 8.5vw, 9.5rem)/.8 Arial, Helvetica, sans-serif;
-      letter-spacing: -.095em;
+      letter-spacing: .11em;
       text-transform: uppercase;
-      margin: 0 0 38px -.065em;
     }
-    h1 span { display: block; }
-    h1 .line-two { color: var(--red); margin-left: .17em; }
-    h1 .line-three { margin-left: .01em; }
-    .hero-deck { max-width: 510px; font: 400 clamp(1.35rem, 2vw, 1.75rem)/1.35 Georgia, "Times New Roman", serif; margin-bottom: 25px; }
-    .hero-deck em { color: var(--red); font-style: normal; }
-    .hero-intro { max-width: 470px; color: #bbbcb3; margin: 0 0 34px; font-size: 1.05rem; line-height: 1.7; }
-    .hero-actions { display: flex; align-items: center; gap: 27px; flex-wrap: wrap; }
-    .text-link {
-      display: inline-flex; gap: 13px; align-items: center;
-      padding: 8px 0; border-bottom: 1px solid rgba(240,238,230,.75);
-      font-size: .75rem; text-transform: uppercase; letter-spacing: .12em;
-      transition: color .2s ease, border-color .2s ease;
+    .muted { color: var(--muted); }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(21,25,29,.96);
+      border-bottom: 1px solid var(--line);
     }
-    .text-link .arrow { color: var(--red); font-size: 1.2rem; transition: transform .2s ease; }
-    .text-link:hover { color: var(--red); border-color: var(--red); }
-    .text-link:hover .arrow { transform: translate(4px,-3px); }
-    .hero-photo {
-      position: relative;
-      min-height: 690px;
-      align-self: stretch;
-      overflow: visible;
-      display: flex;
-      justify-content: center;
-      align-items: end;
-    }
-    .hero-photo::before {
-      content: "JANE";
-      position: absolute;
-      z-index: -1;
-      top: 12%;
-      left: 1%;
-      color: rgba(240,238,230,.045);
-      font: 800 clamp(7rem, 15vw, 17rem)/.8 Arial, sans-serif;
-      letter-spacing: -.12em;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-    }
-    .hero-photo .portrait {
-      width: 100%;
-      height: 100%;
-      min-height: 690px;
-      max-height: 850px;
-      object-fit: contain;
-      object-position: center bottom;
-      align-self: end;
-      filter: grayscale(1) contrast(1.08);
-    }
-    .hero-smiley {
-      position: absolute;
-      z-index: 2;
-      width: clamp(75px, 10vw, 145px);
-      height: auto;
-      top: 15%;
-      right: 14%;
-      transform: rotate(11deg);
-      opacity: .92;
-      mix-blend-mode: screen;
-    }
-    .photo-note {
-      position: absolute;
-      z-index: 4;
-      right: 5%;
-      bottom: 8%;
-      max-width: 190px;
-      padding-top: 10px;
-      border-top: 2px solid var(--red);
-      color: #c5c5bc;
-      font-size: .72rem;
-      line-height: 1.6;
-      text-align: right;
-    }
-    .hero-edge {
-      position: absolute;
-      bottom: 22px;
-      left: max(36px, calc((100vw - var(--content))/2));
-      z-index: 4;
-      color: var(--muted);
-      max-width: 350px;
-    }
-    .hero-edge span { color: var(--red); }
-
-    .ticker {
-      background: var(--red);
-      color: #fff7ed;
-      overflow: hidden;
-      white-space: nowrap;
-      border-bottom: 1px solid rgba(0,0,0,.3);
-    }
-    .ticker-track {
+    .topbar-inner {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 28px;
-      width: max-content;
-      min-width: 100%;
-      padding: 14px 36px;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .17em;
     }
-    .ticker-track span:nth-child(even) { color: rgba(255,247,237,.52); font-size: 1.25rem; }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .brand img { width: 32px; height: 32px; object-fit: contain; }
+    .brand strong { display: block; font-size: .86rem; letter-spacing: .13em; }
+    .brand small { display: block; margin-top: 3px; color: var(--muted); font-size: .7rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 28px; }
+    .nav-link { color: #c4c8c9; letter-spacing: .06em; transition: color .2s; }
+    .nav-link:hover { color: var(--accent-light); }
+    .header-status { color: var(--muted); white-space: nowrap; }
 
-    section { scroll-margin-top: 76px; }
-    .section { padding: clamp(88px, 10vw, 145px) 0; }
-    .section-head { display: flex; align-items: start; justify-content: space-between; gap: 35px; margin-bottom: 50px; }
-    .section-head .eyebrow { margin-bottom: 21px; }
-    h2 {
-      font: 700 clamp(3.2rem, 6.2vw, 7rem)/.91 Arial, Helvetica, sans-serif;
-      letter-spacing: -.075em;
-      margin: 0;
-      max-width: 950px;
+    .hero { border-bottom: 1px solid var(--line); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .75fr;
+      min-height: 610px;
+      align-items: center;
+      gap: 55px;
+      padding-block: 60px 46px;
     }
-    h2 em { color: var(--red); font-style: normal; }
-    .side-note { color: var(--muted); font-size: .8rem; max-width: 220px; padding-top: 6px; }
-    .method-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(30px, 8vw, 120px); align-items: start; }
-    .method-quote {
-      font: 400 clamp(2.2rem, 4.8vw, 5.1rem)/1.02 Georgia, "Times New Roman", serif;
-      letter-spacing: -.055em;
+    .eyebrow { color: var(--accent-light); margin: 0 0 20px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
       max-width: 650px;
+      margin-bottom: 23px;
+      font-size: clamp(3.6rem, 7.4vw, 6.7rem);
+      line-height: .94;
+      letter-spacing: -.065em;
+      font-weight: 700;
     }
-    .method-quote span { color: var(--red); }
-    .method-copy { color: #b8b9b0; max-width: 510px; margin-top: 8px; font-size: 1.08rem; }
-    .method-copy strong { color: var(--paper); font-weight: 600; }
-    .principles { margin-top: 76px; border-top: 1px solid var(--line); }
-    .principle {
-      display: grid;
-      grid-template-columns: 80px minmax(180px, .8fr) minmax(0, 1.2fr);
-      gap: 24px;
-      align-items: baseline;
-      padding: 28px 0 31px;
-      border-bottom: 1px solid var(--line);
-      transition: padding .2s ease;
+    h1 span { display: block; color: #c7cbcb; }
+    .role { font-size: 1.2rem; margin-bottom: 22px; }
+    .summary { max-width: 570px; color: #c1c5c6; font-size: 1.06rem; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid #646b70;
+      font-size: .82rem;
+      transition: background .2s, border-color .2s;
     }
-    .principle:hover { padding-left: 12px; }
-    .principle .number { color: var(--red); font: 400 1.15rem Georgia, serif; }
-    .principle h3 { margin: 0; font: 400 clamp(1.45rem, 2.4vw, 2.35rem)/1.12 Georgia, serif; }
-    .principle p { margin: 0; color: var(--muted); max-width: 530px; font-size: 1rem; }
-
-    .cases { background: #191a17; border-block: 1px solid var(--line); }
-    .cases-head { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 60px; }
-    .cases-head h2 { max-width: 720px; }
-    .cases-head p { color: var(--muted); margin: 0 0 5px; max-width: 250px; font-size: .9rem; }
-    .case-list { border-top: 1px solid var(--line); }
-    .case {
-      display: grid;
-      grid-template-columns: 100px minmax(220px, .7fr) minmax(0, 1fr);
-      gap: 28px;
-      padding: 34px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-    .case-index { color: var(--red); padding-top: 8px; }
-    .case-index b { display: block; font: 400 2.7rem/.95 Georgia, serif; margin-bottom: 12px; }
-    .case-index span { display: block; color: var(--muted); font-size: .65rem; line-height: 1.45; letter-spacing: .08em; text-transform: uppercase; }
-    .case h3 { font: 400 clamp(1.8rem, 3vw, 3rem)/1 Georgia, serif; letter-spacing: -.04em; margin-bottom: 16px; }
-    .case .case-kicker { color: var(--red); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
-    .case-copy { color: #bdbeb5; max-width: 620px; margin: 0; font-size: 1.03rem; }
-    .case-copy strong { color: var(--paper); font-weight: 600; }
-    .case-quote {
-      font: italic 1.35rem/1.35 Georgia, serif;
-      color: var(--paper);
-      border-left: 2px solid var(--red);
-      padding-left: 18px;
-      margin-top: 26px;
-      max-width: 570px;
-    }
-    .case-quote small { display: block; font: 400 .68rem/1.6 Arial, sans-serif; color: var(--muted); margin-top: 8px; letter-spacing: .09em; text-transform: uppercase; }
-
-    .red-john {
-      background: var(--red);
-      color: #fff6ec;
-      position: relative;
+    .button-link.primary { background: var(--accent); border-color: var(--accent); }
+    .button-link:hover { background: var(--surface-2); border-color: var(--accent-light); }
+    .portrait-wrap {
+      align-self: stretch;
+      min-height: 430px;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      background: linear-gradient(180deg, #242a30 0%, #1a1f23 100%);
+      border: 1px solid var(--line);
       overflow: hidden;
     }
-    .red-john .wrap { position: relative; z-index: 1; }
-    .red-john::before {
-      content: "RJ";
-      position: absolute;
-      z-index: 0;
-      right: -2vw;
-      top: -10%;
-      color: rgba(16,17,15,.10);
-      font: 800 clamp(18rem, 45vw, 57rem)/.8 Arial, sans-serif;
-      letter-spacing: -.13em;
-      pointer-events: none;
+    .portrait {
+      width: 100%;
+      height: 100%;
+      max-height: 550px;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: grayscale(1) contrast(1.04);
     }
-    .red-john .eyebrow { color: rgba(255,246,236,.8); }
-    .red-john .eyebrow::before { background: var(--paper); }
-    .red-john-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(35px, 7vw, 110px); align-items: center; }
-    .red-john h2 { font-size: clamp(4.2rem, 9vw, 10rem); line-height: .81; }
-    .red-john h2 em { color: #341714; display: block; margin-left: .3em; }
-    .red-john-copy { max-width: 510px; font-size: 1.13rem; line-height: 1.7; margin-top: 34px; color: rgba(255,246,236,.9); }
-    .red-john-copy strong { color: white; }
-    .smiley-layout { display: flex; align-items: center; justify-content: center; position: relative; min-height: 340px; }
-    .smiley-layout img { width: min(100%, 350px); max-height: 360px; object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: .96; }
-    .smiley-caption { position: absolute; right: 0; bottom: 0; border-top: 1px solid rgba(255,246,236,.7); padding-top: 9px; width: 180px; color: rgba(255,246,236,.82); }
-
-    .files { display: grid; grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr); gap: clamp(35px, 7vw, 100px); align-items: start; }
-    .files-title { position: sticky; top: 120px; }
-    .files-title .eyebrow { margin-bottom: 24px; }
-    .files-title h2 { font-size: clamp(3.1rem, 6vw, 6.6rem); }
-    .files-title p { color: var(--muted); font-size: 1rem; max-width: 350px; margin-top: 28px; }
-    .file-rows { border-top: 1px solid var(--line); }
-    .file-row { border-bottom: 1px solid var(--line); }
-    .file-button {
+    .profile-strip {
       display: grid;
-      grid-template-columns: 47px minmax(0, 1fr) 25px;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .profile-item { padding: 22px 26px 23px 0; }
+    .profile-item + .profile-item { border-left: 1px solid var(--line); padding-left: 26px; }
+    .profile-item .label { color: var(--muted); display: block; margin-bottom: 7px; }
+    .profile-item strong { font-size: .98rem; font-weight: 600; }
+
+    section.content-section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+    .section-heading {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+      margin-bottom: 44px;
+    }
+    h2 { font-size: clamp(2.3rem, 4.4vw, 4rem); line-height: 1.04; letter-spacing: -.05em; margin-bottom: 0; }
+    .section-intro { max-width: 580px; color: #c0c4c5; font-size: 1.05rem; margin: 3px 0 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .method-card { padding: 26px 25px 5px 0; }
+    .method-card + .method-card { border-left: 1px solid var(--line); padding-left: 25px; }
+    .method-card .number { color: var(--accent-light); font-size: .75rem; letter-spacing: .1em; }
+    .method-card h3 { font-size: 1.25rem; line-height: 1.25; margin: 20px 0 12px; }
+    .method-card p { color: var(--muted); font-size: .96rem; margin-bottom: 0; }
+
+    .work-section { background: var(--surface); }
+    .work-list { border-top: 1px solid var(--line); }
+    .work-item {
+      display: grid;
+      grid-template-columns: 70px .7fr 1.3fr;
+      gap: 28px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .work-number { color: var(--accent-light); font-size: .8rem; padding-top: 4px; }
+    .work-item h3 { font-size: 1.28rem; line-height: 1.3; margin: 0; }
+    .work-item p { max-width: 620px; color: #c0c4c5; margin: 0; }
+    .specialization { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .specialization p { color: #c0c4c5; max-width: 560px; margin-bottom: 0; }
+    .specialization-note { border-left: 3px solid var(--accent); padding: 8px 0 8px 23px; font-size: 1.2rem; line-height: 1.5; }
+
+    .details { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+    .details-intro p { max-width: 340px; color: var(--muted); margin-top: 22px; }
+    .detail-list { border-top: 1px solid var(--line); }
+    .detail { border-bottom: 1px solid var(--line); }
+    .detail-button {
+      display: grid;
+      grid-template-columns: 40px 1fr 20px;
       gap: 16px;
       align-items: center;
-      padding: 25px 0;
       width: 100%;
+      padding: 20px 0;
+      color: var(--text);
       text-align: left;
-      background: none;
       border: 0;
+      background: transparent;
       cursor: pointer;
     }
-    .file-number { color: var(--red); font: italic 1rem Georgia, serif; }
-    .file-button strong { display: block; font: 400 clamp(1.45rem, 2.5vw, 2.2rem)/1.1 Georgia, serif; }
-    .file-button small { display: block; color: var(--muted); font-size: .78rem; margin-top: 7px; }
-    .file-button .plus { text-align: right; color: var(--red); font-size: 1.6rem; font-weight: 300; transition: transform .2s ease; }
-    .file-button[aria-expanded="true"] .plus { transform: rotate(45deg); }
-    .file-detail { display: none; padding: 0 35px 27px 63px; color: #b9bab1; font-size: 1rem; max-width: 700px; }
-    .file-detail.open { display: block; }
-    .file-detail p { margin: 0; }
-    .file-detail q { display: block; color: var(--paper); font: italic 1.55rem/1.35 Georgia, serif; margin-top: 14px; quotes: "“" "”"; }
+    .detail-index { color: var(--accent-light); font-size: .78rem; }
+    .detail-button strong { font-size: 1.05rem; font-weight: 600; }
+    .detail-button .toggle { color: var(--accent-light); font-size: 1.25rem; text-align: right; }
+    .detail-panel { display: none; padding: 0 28px 23px 56px; max-width: 700px; color: #c0c4c5; }
+    .detail-panel.open { display: block; }
+    .detail-panel p { margin: 0; }
+    .detail-button[aria-expanded="true"] .toggle { transform: rotate(45deg); }
 
-    .closing { padding: clamp(85px, 11vw, 150px) 0; }
-    .closing-inner { display: grid; grid-template-columns: .7fr 1.3fr; gap: clamp(35px, 8vw, 120px); align-items: start; }
-    .closing-mark { color: var(--red); font-size: .73rem; text-transform: uppercase; letter-spacing: .15em; }
-    .closing h2 { font-size: clamp(3.6rem, 7.5vw, 8rem); }
-    .closing h2 span { color: var(--red); }
-    .closing-copy { color: #bfc0b7; max-width: 610px; margin: 30px 0 0; font-size: 1.08rem; }
+    footer { padding: 28px 0 32px; }
+    .footer-top, .footer-bottom { display: flex; justify-content: space-between; gap: 28px; }
+    .footer-brand { font-size: .78rem; font-weight: 700; letter-spacing: .13em; white-space: nowrap; }
+    .disclaimer { max-width: 650px; color: var(--muted); font-size: .76rem; margin: 0; }
+    .footer-bottom { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 17px; align-items: center; color: var(--muted); }
+    .source-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .source-links a { text-decoration: underline; text-decoration-color: #555e64; text-underline-offset: 4px; }
+    .source-links a:hover { color: var(--accent-light); }
+    :focus-visible { outline: 2px solid var(--accent-light); outline-offset: 4px; }
 
-    footer { border-top: 1px solid var(--line); padding: 31px 0 34px; }
-    .footer-top, .footer-bottom { display: flex; justify-content: space-between; align-items: start; gap: 28px; }
-    .footer-logo { font-size: .8rem; letter-spacing: .18em; font-weight: 700; }
-    .footer-note { color: var(--muted); max-width: 480px; font-size: .75rem; margin: 0; }
-    .footer-bottom { margin-top: 26px; padding-top: 16px; border-top: 1px solid rgba(240,238,230,.1); color: var(--faint); }
-    .source-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .source-links a { text-decoration: underline; text-decoration-color: rgba(240,238,230,.25); text-underline-offset: 4px; }
-    .source-links a:hover { color: var(--red); }
-    :focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
-
-    @media (max-width: 950px) {
-      .wrap { width: calc(100% - 48px); }
-      .hero { grid-template-columns: 1fr .85fr; }
-      .hero-copy { padding-left: 26px; padding-right: 10px; }
-      h1 { font-size: clamp(4.3rem, 9.6vw, 7rem); }
-      .hero-photo, .hero-photo .portrait { min-height: 620px; }
-      .hero-edge { left: 24px; }
-      .method-intro { grid-template-columns: 1fr; gap: 22px; }
-      .method-quote { max-width: 800px; }
-      .method-copy { margin-left: min(20vw, 150px); }
-      .red-john-grid { grid-template-columns: 1fr .7fr; }
-      .case { grid-template-columns: 70px minmax(180px,.8fr) minmax(0,1fr); gap: 20px; }
-      .files { grid-template-columns: .75fr 1.25fr; gap: 40px; }
-    }
-    @media (max-width: 680px) {
-      body { font-size: 17px; }
+    @media (max-width: 800px) {
       .wrap { width: calc(100% - 36px); }
-      .topbar-inner { min-height: 65px; gap: 12px; }
-      .brand { gap: 8px; }
-      .brand img { width: 28px; height: 28px; }
-      .brand strong { font-size: .68rem; }
-      .brand small { font-size: .55rem; }
-      nav { gap: 13px; }
-      .nav-link { font-size: .58rem; letter-spacing: .06em; }
-      .top-right { display: none; }
-      .hero { display: flex; flex-direction: column; min-height: auto; }
-      .hero-copy { padding: 70px 18px 30px; }
-      .hero-index { margin-bottom: 30px; }
-      h1 { font-size: clamp(4.2rem, 16vw, 7rem); margin-bottom: 31px; }
-      .hero-deck { font-size: 1.45rem; }
-      .hero-intro { font-size: 1rem; }
-      .hero-photo { min-height: 420px; height: 72vw; max-height: 570px; }
-      .hero-photo .portrait { min-height: 0; height: 100%; max-height: 570px; width: 100%; object-fit: contain; object-position: center bottom; }
-      .hero-photo::before { top: -1%; left: 12%; font-size: 8rem; writing-mode: horizontal-tb; transform: none; }
-      .hero-smiley { width: 80px; top: 8%; right: 9%; }
-      .photo-note { right: 4%; bottom: 4%; max-width: 140px; font-size: .65rem; }
-      .hero-edge { position: static; padding: 18px; border-top: 1px solid var(--line); max-width: none; }
-      .ticker-track { padding: 13px 18px; gap: 17px; font-size: .65rem; }
-      .section { padding: 76px 0; }
-      .section-head, .cases-head { display: block; margin-bottom: 38px; }
-      h2 { font-size: clamp(3rem, 12vw, 5rem); }
-      .side-note { margin-top: 24px; }
-      .principles { margin-top: 45px; }
-      .principle { grid-template-columns: 35px 1fr; gap: 8px 15px; padding: 22px 0; }
-      .principle h3 { font-size: 1.6rem; }
-      .principle p { grid-column: 2; font-size: .97rem; }
-      .cases-head p { margin-top: 22px; max-width: 330px; }
-      .case { grid-template-columns: 48px minmax(0,1fr); gap: 9px 18px; padding: 28px 0; }
-      .case-index b { font-size: 2rem; }
-      .case h3 { font-size: 2rem; }
-      .case-copy, .case-quote { grid-column: 2; }
-      .case-quote { font-size: 1.22rem; margin-top: 17px; }
-      .red-john-grid { grid-template-columns: 1fr; gap: 20px; }
-      .red-john h2 { font-size: clamp(4.3rem, 17vw, 7rem); }
-      .red-john-copy { font-size: 1.05rem; margin-top: 26px; }
-      .smiley-layout { min-height: 230px; justify-content: flex-start; padding-left: 15%; }
-      .smiley-layout img { width: 220px; max-height: 230px; }
-      .smiley-caption { right: 0; bottom: 0; width: 145px; font-size: .65rem; }
-      .files { grid-template-columns: 1fr; gap: 38px; }
-      .files-title { position: static; }
-      .files-title h2 { font-size: clamp(3.1rem, 12vw, 5.2rem); }
-      .file-button { grid-template-columns: 30px 1fr 20px; gap: 12px; padding: 22px 0; }
-      .file-button strong { font-size: 1.5rem; }
-      .file-detail { padding: 0 0 23px 42px; }
-      .file-detail q { font-size: 1.3rem; }
-      .closing-inner { grid-template-columns: 1fr; gap: 24px; }
-      .closing h2 { font-size: clamp(3.6rem, 14vw, 6rem); }
-      .footer-top, .footer-bottom { flex-direction: column; }
-      .footer-bottom { gap: 16px; }
+      .topbar-inner { gap: 16px; }
+      nav { gap: 15px; }
+      .header-status { display: none; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 25px; min-height: 540px; }
+      h1 { font-size: clamp(3.4rem, 9vw, 5.4rem); }
+      .section-heading { grid-template-columns: 1fr; gap: 20px; }
+      .work-item { grid-template-columns: 42px .8fr 1.2fr; gap: 18px; }
+      .details { gap: 35px; }
     }
-    @media (max-width: 390px) {
-      .brand small { display: none; }
-      nav { gap: 10px; }
-      .nav-link { font-size: .53rem; }
-      h1 { font-size: 3.85rem; }
-      .hero-copy { padding-inline: 16px; }
-      .hero-index { font-size: .61rem; }
-      .case { grid-template-columns: 34px minmax(0,1fr); gap: 8px 13px; }
+    @media (max-width: 580px) {
+      body { font-size: 15px; }
+      .topbar-inner { min-height: 66px; flex-wrap: wrap; padding-block: 10px; }
+      .brand img { width: 27px; height: 27px; }
+      .brand strong { font-size: .74rem; }
+      .brand small { font-size: .62rem; }
+      nav { gap: 13px; }
+      .nav-link { font-size: .61rem; }
+      .hero-grid { grid-template-columns: 1fr; padding-top: 48px; gap: 28px; }
+      h1 { font-size: clamp(3.5rem, 16vw, 5.4rem); }
+      .role { font-size: 1.05rem; }
+      .summary { font-size: 1rem; }
+      .portrait-wrap { min-height: 330px; max-height: 430px; }
+      .portrait { max-height: 430px; }
+      .profile-strip { grid-template-columns: 1fr; }
+      .profile-item, .profile-item + .profile-item { border-left: 0; border-top: 1px solid var(--line); padding: 15px 0; }
+      section.content-section { padding: 65px 0; }
+      h2 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
+      .method-grid { grid-template-columns: 1fr; }
+      .method-card, .method-card + .method-card { border-left: 0; border-bottom: 1px solid var(--line); padding: 22px 0; }
+      .method-card h3 { margin-top: 12px; }
+      .work-item { grid-template-columns: 32px 1fr; gap: 8px 15px; }
+      .work-item p { grid-column: 2; }
+      .specialization, .details { grid-template-columns: 1fr; gap: 25px; }
+      .detail-button { grid-template-columns: 30px 1fr 20px; gap: 12px; }
+      .detail-panel { padding-left: 42px; }
+      .footer-top, .footer-bottom { flex-direction: column; }
+      .footer-bottom { align-items: start; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
@@ -416,204 +247,161 @@
     <div class="wrap topbar-inner">
       <a class="brand" href="#top" aria-label="К началу страницы">
         <img src="images/red-john-smiley.png" alt="">
-        <span><strong>PATRICK JANE</strong><small>Личное дело / CBI</small></span>
+        <span><strong>PATRICK JANE</strong><small>Профиль консультанта</small></span>
       </a>
-      <nav aria-label="Главная навигация">
-        <a class="nav-link" href="#method">Мой метод</a>
-        <a class="nav-link" href="#cases">Дела</a>
-        <a class="nav-link" href="#red-john">Красный Джон</a>
+      <nav aria-label="Навигация">
+        <a class="nav-link" href="#profile">Профиль</a>
+        <a class="nav-link" href="#method">Метод работы</a>
+        <a class="nav-link" href="#experience">Опыт</a>
       </nav>
-      <span class="top-right meta">Открытое дело № 01</span>
+      <span class="header-status meta">CBI · Консультант</span>
     </div>
   </header>
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-copy">
-        <div class="hero-index meta"><b>Патрик Джейн</b><span>/</span><span>Консультант CBI</span></div>
-        <p class="eyebrow">Наблюдение — моя работа</p>
-        <h1><span>Я вижу</span><span class="line-two">больше.</span><span class="line-three">Вы — тоже.</span></h1>
-        <p class="hero-deck">Я не читаю мысли.<br>Я замечаю, <em>что вы хотите скрыть.</em></p>
-        <p class="hero-intro">Меня зовут Патрик Джейн. Раньше я зарабатывал на чужой вере в чудеса. Теперь помогаю CBI раскрывать преступления. Приёмы почти те же. Ставки — совсем другие.</p>
-        <div class="hero-actions">
-          <a class="text-link" href="#method">Как я это делаю <span class="arrow">↘</span></a>
-          <a class="text-link" href="#cases">Три показательных дела <span class="arrow">↘</span></a>
-        </div>
-      </div>
-      <div class="hero-photo">
-        <img class="portrait" src="images/Simon_Baker.png" alt="Патрик Джейн">
-        <img class="hero-smiley" src="images/red-john-smiley.png" alt="">
-        <div class="photo-note meta">Спокойствие — тоже инструмент.<br>Не путайте его с безразличием.</div>
-      </div>
-      <div class="hero-edge meta"><span>Личное правило № 1</span><br>Не верьте первому впечатлению. Особенно своему.</div>
-    </section>
-
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>Смотри внимательнее</span><span>✳</span><span>Сомневайся громче</span><span>✳</span><span>Проверяй всё</span><span>✳</span><span>Не верь фокусам</span><span>✳</span><span>Смотри внимательнее</span><span>✳</span><span>Сомневайся громче</span><span>✳</span><span>Проверяй всё</span>
-      </div>
-    </div>
-
-    <section class="section" id="method">
       <div class="wrap">
-        <div class="section-head">
+        <div class="hero-grid" id="profile">
           <div>
-            <p class="eyebrow">01 / Мой метод</p>
-            <h2>Никакой магии.<br><em>Только люди.</em></h2>
+            <p class="eyebrow">Профессиональный профиль</p>
+            <h1>Патрик <span>Джейн.</span></h1>
+            <p class="role">Консультант Калифорнийского бюро расследований</p>
+            <p class="summary">Специализируюсь на поведенческом анализе, опросах и расследованиях, в которых важны детали. Помогаю следственной группе находить противоречия и проверять версии.</p>
+            <div class="hero-links">
+              <a class="button-link primary" href="#method">Метод работы</a>
+              <a class="button-link" href="#experience">Опыт и специализация</a>
+            </div>
           </div>
-          <p class="side-note">Я не угадываю. Я строю версию, проверяю реакцию и смотрю, что не сходится.</p>
+          <div class="portrait-wrap">
+            <img class="portrait" src="images/Simon_Baker.png" alt="Патрик Джейн">
+          </div>
         </div>
-        <div class="method-intro">
-          <blockquote class="method-quote">«Экстрасенсов не существует». <span>Есть наблюдательность.</span></blockquote>
-          <p class="method-copy">Я знаю, как легко заставить людей поверить в невозможное. Долгое время именно на этом я и зарабатывал. Теперь использую те же знания иначе: <strong>замечаю, провоцирую, сопоставляю.</strong> Уверенный тон ничего не доказывает. Как и нервный жест. Важен рисунок целиком.</p>
-        </div>
-        <div class="principles">
-          <article class="principle">
-            <span class="number">01</span>
-            <h3>Смотрите на то, что изменилось</h3>
-            <p>Человек может нервничать по сотне причин. Но почему он стал нервничать именно после этого вопроса?</p>
-          </article>
-          <article class="principle">
-            <span class="number">02</span>
-            <h3>Задавайте не тот вопрос, которого ждут</h3>
-            <p>Подготовленный ответ легко произнести. Гораздо труднее сохранить сценарий, когда разговор внезапно меняет направление.</p>
-          </article>
-          <article class="principle">
-            <span class="number">03</span>
-            <h3>Дайте человеку показать себя</h3>
-            <p>Я могу подтолкнуть разговор, сыграть простака или самоуверенного идиота. Главное — не перепутать спектакль с доказательством.</p>
-          </article>
-          <article class="principle">
-            <span class="number">04</span>
-            <h3>Проверяйте красивую версию первой</h3>
-            <p>Особенно ту, которая нравится вам. Желание оказаться правым — отличный способ пропустить очевидное.</p>
-          </article>
+        <div class="profile-strip">
+          <div class="profile-item">
+            <span class="label">Должность</span>
+            <strong>Консультант следственной группы</strong>
+          </div>
+          <div class="profile-item">
+            <span class="label">Основной профиль</span>
+            <strong>Поведение и допрос</strong>
+          </div>
+          <div class="profile-item">
+            <span class="label">Рабочий принцип</span>
+            <strong>Наблюдение и проверка фактов</strong>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section cases" id="cases">
+    <section class="content-section" id="method">
       <div class="wrap">
-        <div class="cases-head">
+        <div class="section-heading">
           <div>
-            <p class="eyebrow">02 / Из рабочих заметок</p>
-            <h2>Некоторые детали<br>говорят <em>громче людей.</em></h2>
+            <p class="eyebrow">01 / Метод работы</p>
+            <h2>Внимание к деталям.</h2>
           </div>
-          <p>Три момента, которые объясняют мой подход лучше, чем любое резюме.</p>
+          <p class="section-intro">Поведение человека не даёт готовых ответов. Оно помогает понять, какие вопросы задать и какую версию проверить следующей.</p>
         </div>
-        <div class="case-list">
-          <article class="case">
-            <div class="case-index"><b>01</b><span>Пилот<br>Сезон 1</span></div>
-            <div>
-              <p class="case-kicker">Деталь на стене</p>
-              <h3>Подражатель не понимает почерк оригинала.</h3>
-            </div>
-            <div>
-              <p class="case-copy">На месте преступления появляется знакомый знак. Все смотрят на него и видят только подпись убийцы. Я смотрю на <strong>то, как устроена сцена</strong>: порядок, внимание зрителя, выбор места. Одна ошибка в постановке выдаёт человека, который пытается казаться кем-то другим.</p>
-              <p class="case-quote">«Он думает, что повторил всё. Но не понял главного.»<small>Заметка по мотивам эпизода «Pilot»</small></p>
-            </div>
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="number">01 / Наблюдение</span>
+            <h3>Замечать изменения</h3>
+            <p>Речь, привычки и реакция на конкретный вопрос дают контекст. Отдельный жест сам по себе ничего не доказывает.</p>
           </article>
-          <article class="case">
-            <div class="case-index"><b>02</b><span>Red Handed<br>Сезон 1</span></div>
-            <div>
-              <p class="case-kicker">Ставки меняются</p>
-              <h3>Покерный стол — та же комната для допроса.</h3>
-            </div>
-            <div>
-              <p class="case-copy">Расследование убийства владельца казино выводит меня к игре, где каждый старается выглядеть спокойнее остальных. Я использую навыки менталиста, чтобы заставить виновного выдать себя. Заодно проверяю, насколько легко <strong>люди путают контроль с удачей.</strong></p>
-              <p class="case-quote">Уверенность — не то же самое, что контроль.<small>Личный вывод после дела</small></p>
-            </div>
+          <article class="method-card">
+            <span class="number">02 / Проверка</span>
+            <h3>Сопоставлять факты</h3>
+            <p>Слова, обстоятельства и свидетельства должны складываться в одну версию. Если не складываются, работу нужно продолжать.</p>
           </article>
-          <article class="case">
-            <div class="case-index"><b>03</b><span>Дело без срока</span></div>
-            <div>
-              <p class="case-kicker">Красный Джон</p>
-              <h3>Не все расследования можно оставить в офисе.</h3>
-            </div>
-            <div>
-              <p class="case-copy">Я умею шутить, отвлекать, читать комнату за несколько секунд. Но есть дело, которое я не могу воспринимать как работу. Красный Джон связан с моей прошлой жизнью и потерей, после которой я стал другим человеком. <strong>С этого начинается моя настоящая история.</strong></p>
-              <p class="case-quote">«Он принадлежит мне».<small>Патрик Джейн · сезон 1</small></p>
-            </div>
+          <article class="method-card">
+            <span class="number">03 / Опрос</span>
+            <h3>Менять ход разговора</h3>
+            <p>Неожиданный вопрос помогает проверить подготовленный ответ. Реакция — повод для уточнения, а не замена доказательствам.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section red-john" id="red-john">
-      <div class="wrap red-john-grid">
+    <section class="content-section work-section" id="experience">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / Опыт</p>
+            <h2>Рабочие направления.</h2>
+          </div>
+          <p class="section-intro">Моя задача — помочь группе увидеть то, что неочевидно при первом рассмотрении дела, и определить, что следует проверить.</p>
+        </div>
+        <div class="work-list">
+          <article class="work-item">
+            <span class="work-number">01</span>
+            <h3>Поведенческий анализ</h3>
+            <p>Оценка поведения в контексте ситуации, выявление несоответствий в показаниях и формирование направлений для дальнейшей проверки.</p>
+          </article>
+          <article class="work-item">
+            <span class="work-number">02</span>
+            <h3>Работа со свидетелями</h3>
+            <p>Построение разговора, уточнение деталей и проверка того, насколько показания согласуются с установленными обстоятельствами.</p>
+          </article>
+          <article class="work-item">
+            <span class="work-number">03</span>
+            <h3>Анализ версий</h3>
+            <p>Поиск слабых мест в предположениях, сопоставление доступной информации и проверка альтернативных объяснений.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="wrap specialization">
         <div>
-          <p class="eyebrow">03 / Незакрытое дело</p>
-          <h2>Красный<br><em>Джон.</em></h2>
-          <p class="red-john-copy">У него есть подпись. У меня — память о том, что стоит за ней. Для остальных это имя в расследовании. Для меня — <strong>единственное дело, которое никогда не заканчивается в конце рабочего дня.</strong></p>
+          <p class="eyebrow">03 / Подход</p>
+          <h2>Без мистики.<br>Без поспешных выводов.</h2>
         </div>
-        <div class="smiley-layout">
-          <img src="images/red-john-smiley.png" alt="Знак Красного Джона">
-          <p class="smiley-caption meta">Образ простой.<br>Смысл — нет.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="files">
-      <div class="wrap files">
-        <div class="files-title">
-          <p class="eyebrow">04 / Личное дело</p>
-          <h2>Что остаётся<br>за улыбкой.</h2>
-          <p>Мои привычки легко принять за характер. Иногда это так. Иногда — удобный способ не отвечать на вопрос.</p>
-        </div>
-        <div class="file-rows">
-          <article class="file-row">
-            <button class="file-button" type="button" aria-expanded="false" aria-controls="detail-past" data-file="past">
-              <span class="file-number">01</span>
-              <span><strong>Прошлая роль</strong><small>Медиум, шоумен, профессиональный обманщик</small></span>
-              <span class="plus">+</span>
-            </button>
-            <div class="file-detail" id="detail-past">
-              <p>Я представлялся человеком со сверхъестественным даром. На деле работали наблюдательность, психология и умение подталкивать людей к нужному выводу. Я знаю, почему публика хочет верить — и как этой верой злоупотребляют.</p>
-              <q>There's no such thing as psychics.</q>
-            </div>
-          </article>
-          <article class="file-row">
-            <button class="file-button" type="button" aria-expanded="false" aria-controls="detail-humor" data-file="humor">
-              <span class="file-number">02</span>
-              <span><strong>Юмор</strong><small>Лучший способ снизить чужую защиту</small></span>
-              <span class="plus">+</span>
-            </button>
-            <div class="file-detail" id="detail-humor">
-              <p>Я могу быть обаятельным, невыносимым или смешным — иногда за одну минуту. Это не всегда маска. Но если все смеются, обычно никто не замечает, кто задаёт вопросы.</p>
-              <q>Пока вы решаете, шучу ли я, я уже слушаю ответ.</q>
-            </div>
-          </article>
-          <article class="file-row">
-            <button class="file-button" type="button" aria-expanded="false" aria-controls="detail-grief" data-file="grief">
-              <span class="file-number">03</span>
-              <span><strong>То, о чём я не шучу</strong><small>Причина, по которой это дело личное</small></span>
-              <span class="plus">+</span>
-            </button>
-            <div class="file-detail" id="detail-grief">
-              <p>Моя лёгкость не означает, что прошлое меня не касается. Потеря семьи определила то, как я работаю и почему не могу просто отойти в сторону. Это не делает мои решения правильными. Только объясняет, почему я продолжаю.</p>
-            </div>
-          </article>
-          <article class="file-row">
-            <button class="file-button" type="button" aria-expanded="false" aria-controls="detail-rules" data-file="rules">
-              <span class="file-number">04</span>
-              <span><strong>Мои правила</strong><small>Не всегда совместимы с протоколом</small></span>
-              <span class="plus">+</span>
-            </button>
-            <div class="file-detail" id="detail-rules">
-              <p>Сначала понять, что человек хочет скрыть. Затем проверить, соответствует ли этому фактам. И никогда не путать собственную уверенность с правдой. Последнее правило я нарушаю чаще, чем хотелось бы.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="wrap closing-inner">
-        <p class="closing-mark">Последняя заметка / P. Jane</p>
         <div>
-          <h2>Все смотрят.<br>Мало кто <span>видит.</span></h2>
-          <p class="closing-copy">Я не герой. Не экстрасенс. И уж точно не образец для подражания. Я просто научился замечать слабые места в чужих историях. Иногда — слишком поздно замечаю свои.</p>
-          <a class="text-link" href="#top">Начать сначала <span class="arrow">↗</span></a>
+          <p class="specialization-note">«Уверенность не делает версию фактом».</p>
+          <p style="margin-top:22px">В прошлом я выступал в роли медиума. Я знаю, как легко создать впечатление, будто человек обладает особыми способностями. В расследовании меня интересует не впечатление, а то, что можно проверить.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="personal">
+      <div class="wrap details">
+        <div class="details-intro">
+          <p class="eyebrow">04 / Дополнительные сведения</p>
+          <h2>Личное дело.</h2>
+          <p>Некоторые обстоятельства объясняют мой подход к работе. Они не освобождают меня от необходимости проверять собственные выводы.</p>
+        </div>
+        <div class="detail-list">
+          <article class="detail">
+            <button class="detail-button" type="button" aria-expanded="false" aria-controls="detail-background">
+              <span class="detail-index">01</span>
+              <strong>Профессиональное прошлое</strong>
+              <span class="toggle">+</span>
+            </button>
+            <div class="detail-panel" id="detail-background">
+              <p>До работы с CBI я выступал как медиум. Мои навыки основывались на наблюдательности, знании человеческого поведения и сценических приёмах, а не на сверхъестественных способностях.</p>
+            </div>
+          </article>
+          <article class="detail">
+            <button class="detail-button" type="button" aria-expanded="false" aria-controls="detail-principles">
+              <span class="detail-index">02</span>
+              <strong>Принципы</strong>
+              <span class="toggle">+</span>
+            </button>
+            <div class="detail-panel" id="detail-principles">
+              <p>Сомневаться в очевидном, проверять удобные объяснения и не считать собственную уверенность доказательством. Это относится и к моим версиям.</p>
+            </div>
+          </article>
+          <article class="detail">
+            <button class="detail-button" type="button" aria-expanded="false" aria-controls="detail-case">
+              <span class="detail-index">03</span>
+              <strong>Дело Красного Джона</strong>
+              <span class="toggle">+</span>
+            </button>
+            <div class="detail-panel" id="detail-case">
+              <p>Это личное дело, которое повлияло на мою жизнь и работу. Я не считаю личную заинтересованность преимуществом: она может мешать оценивать факты беспристрастно.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -622,14 +410,13 @@
   <footer>
     <div class="wrap">
       <div class="footer-top">
-        <span class="footer-logo">PATRICK JANE / CBI</span>
-        <p class="footer-note">Фан-сайт по The Mentalist. Текст написан как художественное досье от лица персонажа; описания сцен не являются дословными диалогами, кроме коротких цитат, отмеченных в тексте.</p>
+        <span class="footer-brand">PATRICK JANE · CBI</span>
+        <p class="disclaimer">Неофициальный фан-сайт по сериалу «Менталист». Персонаж и организация представлены в художественных целях. Сайт не связан с реальными правоохранительными органами.</p>
       </div>
       <div class="footer-bottom meta">
         <div class="source-links">
-          <a href="https://en.wikipedia.org/wiki/The_Mentalist" target="_blank" rel="noopener noreferrer">The Mentalist / Wikipedia</a>
-          <a href="https://thementalist.fandom.com/wiki/Pilot" target="_blank" rel="noopener noreferrer">Pilot / Fandom Wiki</a>
-          <a href="https://thementalist.fandom.com/wiki/Red_Handed" target="_blank" rel="noopener noreferrer">Red Handed / Fandom Wiki</a>
+          <a href="https://en.wikipedia.org/wiki/The_Mentalist" target="_blank" rel="noopener noreferrer">О сериале</a>
+          <a href="https://thementalist.fandom.com/wiki/Patrick_Jane" target="_blank" rel="noopener noreferrer">Профиль персонажа</a>
         </div>
         <span>notsons · 2026</span>
       </div>
@@ -637,12 +424,12 @@
   </footer>
 
   <script>
-    document.querySelectorAll("[data-file]").forEach((button) => {
+    document.querySelectorAll(".detail-button").forEach((button) => {
       button.addEventListener("click", () => {
         const panel = document.getElementById(button.getAttribute("aria-controls"));
-        const isOpen = button.getAttribute("aria-expanded") === "true";
-        button.setAttribute("aria-expanded", String(!isOpen));
-        panel.classList.toggle("open", !isOpen);
+        const open = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!open));
+        panel.classList.toggle("open", !open);
       });
     });
   </script>
