@@ -13,227 +13,131 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg: #15191d;
-      --surface: #1d2227;
-      --surface-2: #242a30;
-      --text: #e8e7e1;
-      --muted: #a7adb1;
-      --line: #3a4147;
-      --accent: #a84b43;
-      --accent-light: #d17b70;
-      --content: 1120px;
+      --bg: #101417;
+      --surface: #191f23;
+      --surface-2: #222a30;
+      --text: #f0f1ed;
+      --muted: #aab2b5;
+      --line: #424b50;
+      --accent: #b6413b;
+      --accent-light: #e16b60;
+      --content: 1180px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 16px/1.65 Arial, Helvetica, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
-    .meta, .eyebrow, .nav-link, .label {
-      font-size: .72rem;
-      line-height: 1.5;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
+    .wrap { width: min(var(--content), calc(100% - 56px)); margin-inline: auto; }
+    .meta, .eyebrow, .nav-link, .label { font-size: .72rem; line-height: 1.4; letter-spacing: .09em; text-transform: uppercase; }
     .muted { color: var(--muted); }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(21,25,29,.96);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-    .brand { display: flex; align-items: center; gap: 13px; }
-    .brand img { width: 32px; height: 32px; object-fit: contain; }
-    .brand strong { display: block; font-size: .86rem; letter-spacing: .13em; }
-    .brand small { display: block; margin-top: 3px; color: var(--muted); font-size: .7rem; }
-    nav { display: flex; flex-wrap: wrap; gap: 28px; }
-    .nav-link { color: #c4c8c9; letter-spacing: .06em; transition: color .2s; }
-    .nav-link:hover { color: var(--accent-light); }
-    .header-status { color: var(--muted); white-space: nowrap; }
-
-    .hero { border-bottom: 1px solid var(--line); }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .75fr;
-      min-height: 610px;
-      align-items: center;
-      gap: 55px;
-      padding-block: 60px 46px;
-    }
-    .eyebrow { color: var(--accent-light); margin: 0 0 20px; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: #0b0e10; border-bottom: 3px solid var(--accent); }
+    .topbar-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand img { width: 36px; height: 36px; object-fit: contain; }
+    .brand strong { display: block; font-size: .9rem; letter-spacing: .13em; }
+    .brand small { display: block; margin-top: 4px; color: #aab0b2; font-size: .7rem; letter-spacing: .04em; }
+    nav { display: flex; flex-wrap: wrap; gap: 25px; }
+    .nav-link { color: #d2d6d6; letter-spacing: .04em; border-bottom: 2px solid transparent; padding: 29px 0 26px; }
+    .nav-link:hover { color: #fff; border-color: var(--accent-light); }
+    .header-status { color: #d1d6d6; white-space: nowrap; border: 1px solid #465057; padding: 8px 10px; }
+    .hero { background: #171d21; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .82fr; min-height: 560px; align-items: stretch; gap: 48px; padding-block: 42px 38px; }
+    .hero-copy { align-self: center; padding: 10px 0 22px; }
+    .eyebrow { color: var(--accent-light); margin: 0 0 17px; font-weight: 700; }
     h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      max-width: 650px;
-      margin-bottom: 23px;
-      font-size: clamp(3.6rem, 7.4vw, 6.7rem);
-      line-height: .94;
-      letter-spacing: -.065em;
-      font-weight: 700;
-    }
-    h1 span { display: block; color: #c7cbcb; }
-    .role { font-size: 1.2rem; margin-bottom: 22px; }
-    .summary { max-width: 570px; color: #c1c5c6; font-size: 1.06rem; }
-    .hero-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .button-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 16px;
-      border: 1px solid #646b70;
-      font-size: .82rem;
-      transition: background .2s, border-color .2s;
-    }
+    h1 { max-width: 700px; margin-bottom: 18px; font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: .94; letter-spacing: -.055em; font-weight: 700; }
+    h1 span { display: block; color: #c4cbcc; }
+    .role { font-size: 1.2rem; line-height: 1.4; max-width: 560px; margin-bottom: 20px; font-weight: 600; }
+    .summary { max-width: 560px; color: #c2c9ca; font-size: 1rem; border-left: 3px solid var(--accent); padding: 2px 0 2px 17px; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+    .button-link { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; padding: 10px 15px; border: 1px solid #697277; font-size: .82rem; font-weight: 700; transition: background .15s, border-color .15s; }
     .button-link.primary { background: var(--accent); border-color: var(--accent); }
-    .button-link:hover { background: var(--surface-2); border-color: var(--accent-light); }
-    .portrait-wrap {
-      align-self: stretch;
-      min-height: 430px;
-      display: flex;
-      align-items: end;
-      justify-content: center;
-      background: linear-gradient(180deg, #242a30 0%, #1a1f23 100%);
-      border: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .portrait {
-      width: 100%;
-      height: 100%;
-      max-height: 550px;
-      object-fit: contain;
-      object-position: center bottom;
-      filter: grayscale(1) contrast(1.04);
-    }
-    .profile-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-    }
-    .profile-item { padding: 22px 26px 23px 0; }
-    .profile-item + .profile-item { border-left: 1px solid var(--line); padding-left: 26px; }
-    .profile-item .label { color: var(--muted); display: block; margin-bottom: 7px; }
-    .profile-item strong { font-size: .98rem; font-weight: 600; }
-
-    section.content-section { padding: 88px 0; border-bottom: 1px solid var(--line); }
-    .section-heading {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 50px;
-      align-items: start;
-      margin-bottom: 44px;
-    }
-    h2 { font-size: clamp(2.3rem, 4.4vw, 4rem); line-height: 1.04; letter-spacing: -.05em; margin-bottom: 0; }
-    .section-intro { max-width: 580px; color: #c0c4c5; font-size: 1.05rem; margin: 3px 0 0; }
-    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-    .method-card { padding: 26px 25px 5px 0; }
-    .method-card + .method-card { border-left: 1px solid var(--line); padding-left: 25px; }
-    .method-card .number { color: var(--accent-light); font-size: .75rem; letter-spacing: .1em; }
-    .method-card h3 { font-size: 1.25rem; line-height: 1.25; margin: 20px 0 12px; }
-    .method-card p { color: var(--muted); font-size: .96rem; margin-bottom: 0; }
-
-    .work-section { background: var(--surface); }
-    .work-list { border-top: 1px solid var(--line); }
-    .work-item {
-      display: grid;
-      grid-template-columns: 70px .7fr 1.3fr;
-      gap: 28px;
-      padding: 26px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .work-number { color: var(--accent-light); font-size: .8rem; padding-top: 4px; }
-    .work-item h3 { font-size: 1.28rem; line-height: 1.3; margin: 0; }
-    .work-item p { max-width: 620px; color: #c0c4c5; margin: 0; }
-    .specialization { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-    .specialization p { color: #c0c4c5; max-width: 560px; margin-bottom: 0; }
-    .specialization-note { border-left: 3px solid var(--accent); padding: 8px 0 8px 23px; font-size: 1.2rem; line-height: 1.5; }
-
-    .details { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
-    .details-intro p { max-width: 340px; color: var(--muted); margin-top: 22px; }
-    .detail-list { border-top: 1px solid var(--line); }
+    .button-link:hover { background: #30383d; border-color: var(--accent-light); }
+    .portrait-wrap { position: relative; align-self: stretch; min-height: 430px; display: flex; align-items: end; justify-content: center; background: #252c31; border: 1px solid #4a5358; border-bottom: 4px solid var(--accent); overflow: hidden; }
+    .portrait { width: 100%; height: 100%; max-height: 540px; object-fit: contain; object-position: center bottom; filter: grayscale(1) contrast(1.12); }
+    .portrait-wrap::after { content: "ПАТРИК ДЖЕЙН  /  КОНСУЛЬТАНТ"; position: absolute; bottom: 0; left: 0; right: 0; padding: 13px 16px; background: rgba(9,12,14,.92); color: #f1f2ee; font-size: .68rem; font-weight: 700; letter-spacing: .11em; border-top: 1px solid #596166; }
+    .profile-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: #0d1113; border-top: 1px solid var(--line); }
+    .profile-item { padding: 19px 24px 21px 0; }
+    .profile-item + .profile-item { border-left: 1px solid var(--line); padding-left: 24px; }
+    .profile-item .label { color: var(--muted); display: block; margin-bottom: 8px; }
+    .profile-item strong { font-size: .96rem; font-weight: 700; }
+    section.content-section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: .85fr 1.15fr; gap: 54px; align-items: start; margin-bottom: 34px; }
+    h2 { font-size: clamp(2.35rem, 4.2vw, 3.8rem); line-height: 1.02; letter-spacing: -.045em; margin-bottom: 0; }
+    .section-intro { max-width: 610px; color: #c4cbcc; font-size: 1.02rem; margin: 3px 0 0; border-left: 1px solid var(--line); padding-left: 22px; }
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .method-card { padding: 22px 22px 24px; border: 1px solid var(--line); background: #171c20; border-top: 3px solid #596167; }
+    .method-card:first-child { border-top-color: var(--accent); }
+    .method-card .number { color: var(--accent-light); font-size: .7rem; letter-spacing: .09em; font-weight: 700; }
+    .method-card h3 { font-size: 1.2rem; line-height: 1.25; margin: 18px 0 10px; }
+    .method-card p { color: var(--muted); font-size: .93rem; margin-bottom: 0; }
+    .work-section { background: #1a2024; }
+    .work-list { border-top: 2px solid #657077; }
+    .work-item { display: grid; grid-template-columns: 54px .75fr 1.25fr; gap: 25px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .work-number { color: var(--accent-light); font-size: .78rem; font-weight: 700; padding-top: 4px; }
+    .work-item h3 { font-size: 1.18rem; line-height: 1.3; margin: 0; }
+    .work-item p { max-width: 650px; color: #c0c7c8; margin: 0; font-size: .96rem; }
+    .specialization { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .specialization p { color: #c4cbcc; max-width: 570px; margin-bottom: 0; }
+    .specialization-note { border-left: 4px solid var(--accent); padding: 12px 0 12px 20px; font-size: 1.2rem; line-height: 1.45; font-weight: 700; color: var(--text) !important; }
+    .details { display: grid; grid-template-columns: .8fr 1.2fr; gap: 65px; }
+    .details-intro p { max-width: 350px; color: var(--muted); margin-top: 18px; }
+    .detail-list { border-top: 2px solid #657077; }
     .detail { border-bottom: 1px solid var(--line); }
-    .detail-button {
-      display: grid;
-      grid-template-columns: 40px 1fr 20px;
-      gap: 16px;
-      align-items: center;
-      width: 100%;
-      padding: 20px 0;
-      color: var(--text);
-      text-align: left;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-    .detail-index { color: var(--accent-light); font-size: .78rem; }
-    .detail-button strong { font-size: 1.05rem; font-weight: 600; }
-    .detail-button .toggle { color: var(--accent-light); font-size: 1.25rem; text-align: right; }
-    .detail-panel { display: none; padding: 0 28px 23px 56px; max-width: 700px; color: #c0c4c5; }
+    .detail-button { display: grid; grid-template-columns: 38px 1fr 20px; gap: 15px; align-items: center; width: 100%; padding: 19px 0; color: var(--text); text-align: left; border: 0; background: transparent; cursor: pointer; }
+    .detail-index { color: var(--accent-light); font-size: .78rem; font-weight: 700; }
+    .detail-button strong { font-size: 1rem; font-weight: 700; }
+    .detail-button .toggle { color: var(--accent-light); font-size: 1.3rem; text-align: right; }
+    .detail-panel { display: none; padding: 0 24px 22px 53px; max-width: 700px; color: #c0c7c8; }
     .detail-panel.open { display: block; }
     .detail-panel p { margin: 0; }
     .detail-button[aria-expanded="true"] .toggle { transform: rotate(45deg); }
-
-    footer { padding: 28px 0 32px; }
+    footer { padding: 27px 0 30px; background: #0b0e10; }
     .footer-top, .footer-bottom { display: flex; justify-content: space-between; gap: 28px; }
     .footer-brand { font-size: .78rem; font-weight: 700; letter-spacing: .13em; white-space: nowrap; }
-    .disclaimer { max-width: 650px; color: var(--muted); font-size: .76rem; margin: 0; }
-    .footer-bottom { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 17px; align-items: center; color: var(--muted); }
+    .disclaimer { max-width: 660px; color: var(--muted); font-size: .76rem; margin: 0; }
+    .footer-bottom { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 16px; align-items: center; color: var(--muted); }
     .source-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .source-links a { text-decoration: underline; text-decoration-color: #555e64; text-underline-offset: 4px; }
+    .source-links a { text-decoration: underline; text-decoration-color: #596166; text-underline-offset: 4px; }
     .source-links a:hover { color: var(--accent-light); }
     :focus-visible { outline: 2px solid var(--accent-light); outline-offset: 4px; }
-
     @media (max-width: 800px) {
       .wrap { width: calc(100% - 36px); }
       .topbar-inner { gap: 16px; }
       nav { gap: 15px; }
       .header-status { display: none; }
-      .hero-grid { grid-template-columns: 1fr .8fr; gap: 25px; min-height: 540px; }
-      h1 { font-size: clamp(3.4rem, 9vw, 5.4rem); }
-      .section-heading { grid-template-columns: 1fr; gap: 20px; }
-      .work-item { grid-template-columns: 42px .8fr 1.2fr; gap: 18px; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 24px; min-height: 500px; }
+      h1 { font-size: clamp(3.2rem, 9vw, 5.3rem); }
+      .section-heading { grid-template-columns: 1fr; gap: 18px; }
+      .work-item { grid-template-columns: 38px .85fr 1.15fr; gap: 16px; }
       .details { gap: 35px; }
     }
     @media (max-width: 580px) {
       body { font-size: 15px; }
       .topbar-inner { min-height: 66px; flex-wrap: wrap; padding-block: 10px; }
-      .brand img { width: 27px; height: 27px; }
+      .brand img { width: 28px; height: 28px; }
       .brand strong { font-size: .74rem; }
       .brand small { font-size: .62rem; }
       nav { gap: 13px; }
-      .nav-link { font-size: .61rem; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 48px; gap: 28px; }
-      h1 { font-size: clamp(3.5rem, 16vw, 5.4rem); }
+      .nav-link { font-size: .61rem; padding: 7px 0; }
+      .hero-grid { grid-template-columns: 1fr; padding-top: 36px; gap: 24px; }
+      h1 { font-size: clamp(3.4rem, 16vw, 5.1rem); }
       .role { font-size: 1.05rem; }
-      .summary { font-size: 1rem; }
-      .portrait-wrap { min-height: 330px; max-height: 430px; }
-      .portrait { max-height: 430px; }
+      .portrait-wrap { min-height: 320px; max-height: 400px; }
+      .portrait { max-height: 400px; }
       .profile-strip { grid-template-columns: 1fr; }
-      .profile-item, .profile-item + .profile-item { border-left: 0; border-top: 1px solid var(--line); padding: 15px 0; }
-      section.content-section { padding: 65px 0; }
-      h2 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
+      .profile-item, .profile-item + .profile-item { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0; }
+      section.content-section { padding: 54px 0; }
+      h2 { font-size: clamp(2.35rem, 11vw, 3.3rem); }
       .method-grid { grid-template-columns: 1fr; }
-      .method-card, .method-card + .method-card { border-left: 0; border-bottom: 1px solid var(--line); padding: 22px 0; }
-      .method-card h3 { margin-top: 12px; }
-      .work-item { grid-template-columns: 32px 1fr; gap: 8px 15px; }
+      .method-card { padding: 20px; }
+      .work-item { grid-template-columns: 30px 1fr; gap: 7px 13px; }
       .work-item p { grid-column: 2; }
-      .specialization, .details { grid-template-columns: 1fr; gap: 25px; }
-      .detail-button { grid-template-columns: 30px 1fr 20px; gap: 12px; }
-      .detail-panel { padding-left: 42px; }
+      .specialization, .details { grid-template-columns: 1fr; gap: 24px; }
+      .detail-button { grid-template-columns: 28px 1fr 20px; gap: 12px; }
+      .detail-panel { padding-left: 40px; }
       .footer-top, .footer-bottom { flex-direction: column; }
       .footer-bottom { align-items: start; }
     }
@@ -263,10 +167,10 @@
       <div class="wrap">
         <div class="hero-grid" id="profile">
           <div>
-            <p class="eyebrow">Профессиональный профиль</p>
+            <p class="eyebrow">Служебный профиль · CBI</p>
             <h1>Патрик <span>Джейн.</span></h1>
             <p class="role">Консультант Калифорнийского бюро расследований</p>
-            <p class="summary">Специализируюсь на поведенческом анализе, опросах и расследованиях, в которых важны детали. Помогаю следственной группе находить противоречия и проверять версии.</p>
+            <p class="summary">Консультант по поведенческому анализу. Работаю со свидетелями, проверяю версии и обращаю внимание на детали, которые легко упустить.</p>
             <div class="hero-links">
               <a class="button-link primary" href="#method">Метод работы</a>
               <a class="button-link" href="#experience">Опыт и специализация</a>
@@ -298,9 +202,9 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">01 / Метод работы</p>
-            <h2>Внимание к деталям.</h2>
+            <h2>Анализ поведения.</h2>
           </div>
-          <p class="section-intro">Поведение человека не даёт готовых ответов. Оно помогает понять, какие вопросы задать и какую версию проверить следующей.</p>
+          <p class="section-intro">Наблюдения помогают определить направление проверки. Выводы делаются только после сопоставления показаний и фактов.</p>
         </div>
         <div class="method-grid">
           <article class="method-card">
@@ -327,9 +231,9 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">02 / Опыт</p>
-            <h2>Рабочие направления.</h2>
+            <h2>Основные направления.</h2>
           </div>
-          <p class="section-intro">Моя задача — помочь группе увидеть то, что неочевидно при первом рассмотрении дела, и определить, что следует проверить.</p>
+          <p class="section-intro">Консультативная работа по делам, где важны показания, поведение участников и проверка нескольких версий.</p>
         </div>
         <div class="work-list">
           <article class="work-item">
@@ -355,11 +259,11 @@
       <div class="wrap specialization">
         <div>
           <p class="eyebrow">03 / Подход</p>
-          <h2>Без мистики.<br>Без поспешных выводов.</h2>
+          <h2>Принципы работы.</h2>
         </div>
         <div>
-          <p class="specialization-note">«Уверенность не делает версию фактом».</p>
-          <p style="margin-top:22px">В прошлом я выступал в роли медиума. Я знаю, как легко создать впечатление, будто человек обладает особыми способностями. В расследовании меня интересует не впечатление, а то, что можно проверить.</p>
+          <p class="specialization-note">«Версия должна выдерживать проверку».</p>
+          <p style="margin-top:22px">Ранее я выступал как медиум. Этот опыт научил меня отличать убедительное впечатление от подтверждённых сведений. В расследовании важны проверяемые факты, а не эффектные объяснения.</p>
         </div>
       </div>
     </section>
@@ -369,7 +273,7 @@
         <div class="details-intro">
           <p class="eyebrow">04 / Дополнительные сведения</p>
           <h2>Личное дело.</h2>
-          <p>Некоторые обстоятельства объясняют мой подход к работе. Они не освобождают меня от необходимости проверять собственные выводы.</p>
+          <p>Сведения о профессиональном прошлом и личных обстоятельствах, имеющих отношение к работе.</p>
         </div>
         <div class="detail-list">
           <article class="detail">
